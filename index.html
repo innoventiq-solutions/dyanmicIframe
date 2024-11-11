@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic iframe</title>
+</head>
+<body>
+  <h1>Embedded Video</h1>
+
+  <!-- Iframe with dynamic source -->
+  <div style="position: relative; padding-top: 56.25%;">
+    <iframe id="dynamicIframe" 
+            style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" 
+            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" 
+            allowfullscreen="true"></iframe>
+  </div>
+
+  <script>
+    // Get the 'src' parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const iframeSrc = urlParams.get('src');
+
+    // Set the iframe source dynamically
+    if (iframeSrc) {
+      document.getElementById('dynamicIframe').src = iframeSrc;
+    } else {
+      document.getElementById('dynamicIframe').src = 'https://default.url'; // Fallback URL
+    }
+  </script>
+</body>
+</html>
+    
